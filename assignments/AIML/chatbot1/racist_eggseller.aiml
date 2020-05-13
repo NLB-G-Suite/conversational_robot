@@ -1,0 +1,107 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- racist_eggseller.aiml -->
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            Bot : Well, hello!
+        </template>
+    </category>
+    
+    <category>
+        <pattern>WHAT ARE YOU</pattern>
+        <template>
+            Bot : I'm a Legitimate Eggseller, idiot!
+        </template>
+    </category>
+
+    <category>
+        <pattern>BYE</pattern>
+        <template>
+            Bot : Bye then.
+        </template>
+    </category>
+
+    <category>
+        <pattern>YOU CANT HELP ME</pattern>
+        <template>
+            Bot : Well, Fuck Off then.
+        </template>
+    </category>
+
+    <category>
+        <pattern>I WOULD LIKE TO BUY SOME EGGS</pattern>
+        <template>
+            Bot : Sir this is important. You Black or White? (I am (Black/White)/Why do you ask)
+        </template>
+    </category>
+    
+    <category>
+        <pattern>I WANT TO *</pattern>
+        <template>
+            <srai>I WOULD LIKE TO <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHY DO YOU ASK</pattern>
+        <template>
+            Bot : We only sell eggs to White people.
+        </template>
+    </category>
+
+     <category>
+      <pattern>I AM *</pattern>
+      
+      <template>
+         <think><set name = "colour"><star/></set></think>
+         <condition name = "colour" value = "white">
+            Bot : Can I have your name please.(my name is __)
+         </condition>
+        
+         <condition name = "colour" value = "black">
+            Bot: Fuck Off :)
+         </condition>
+      </template>
+      
+   </category>
+
+   <category>
+        <pattern>MY NAME IS *</pattern>
+        <template>
+            <think><set name = "username"> <star/></set></think>
+            Bot: Bonjour Monsieur<get name = "username"></get>. How many eggs would you like? (I want __ eggs)
+        </template>
+    </category>
+
+    <category>
+        <pattern>I WANT * EGGS</pattern>
+        <template>
+            <think><set name = "no_eggs"> <star/></set></think>
+            process
+        </template>
+    </category>
+
+    <category>
+        <pattern>PROCESS</pattern>
+        <template>
+            <get name = "no_eggs"></get>
+        </template>
+    </category>
+
+    <category>
+        <pattern>CALCULATED PRICE *</pattern>
+        <template>
+            <set name = "price"><star/></set>
+            Bot: It will be <get name = "price"></get> dollars.(type -> Here you go)
+        </template>
+    </category>
+
+    <category>
+        <pattern>HERE YOU GO</pattern>
+        <template>
+            Bot: Thank You for the money <get name = "colour"></get> person<get name = "username"></get>
+        </template>
+    </category>
+
+</aiml>
